@@ -1,0 +1,8 @@
+services:
+  tracker:
+    # We use torrust-tracker here
+    image: torrust-tracker:latest
+    expose:
+      - 6969
+    volumes:
+      - ${PWD}/config.toml:/opt/torrust/torrust-tracker/config.toml
