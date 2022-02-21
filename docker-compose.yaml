@@ -11,7 +11,7 @@ services:
     environment:
       - YOUR_DOMAIN=localhost
   backend:
-    image: torrust-backend:latest
+    image: zorlin/torrust-backend:latest
     expose:
       - 3000
     volumes:
