@@ -29,3 +29,7 @@ Once you've created the configuration files and frontend build, simply bring up 
 docker-compose up -d
 
 You may need to run it a few times ;)
+
+## What just happened?
+
+We set up a basic Torrust instance which runs entirely in Docker and published it to the web. This is a very early version of the Docker tooling for Torrust but should soon support (almost) everything you'd want to do with Torrust. More documentation coming soon!
