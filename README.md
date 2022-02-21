@@ -26,7 +26,7 @@ docker run --rm \
 
 Once you've created the configuration files and frontend build, simply bring up the service with Docker Compose;
 
-docker-compose up -d
+`docker-compose up -d`
 
 You may need to run it a few times ;)
 
