@@ -25,7 +25,7 @@ services:
     expose:
       - 80
     ports:
-      - 80:80
+      - 0.0.0.0:80:80
     volumes:
       - type: bind
         source: ./data/frontend/dist/
