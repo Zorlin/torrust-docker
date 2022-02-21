@@ -8,6 +8,8 @@ services:
       - type: bind
         source: ./tracker-config.toml
         target: /opt/torrust/torrust-tracker/config.toml
+    environment:
+      - YOUR_DOMAIN=localhost
   backend:
     image: torrust-backend:latest
     expose:
@@ -16,3 +18,18 @@ services:
       - type: bind
         source: ./backend-config.toml
         target: /opt/torrust/torrust/backend/config.toml
+    environment:
+      - YOUR_DOMAIN=localhost
+  nginx:
+    image: nginx:latest
+    expose:
+      - 80
+    ports:
+      - 80:80
+    volumes:
+      - type: bind
+        source: ./data/frontend/dist/
+        target: /usr/share/nginx/html
+      - ./torrust-frontend/templates:/etc/nginx/templates
+    environment:
+      - YOUR_DOMAIN=localhost

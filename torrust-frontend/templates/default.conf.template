@@ -1,0 +1,14 @@
+server {
+    listen 80;
+    server_name ${YOUR_DOMAIN};
+
+    root /usr/share/nginx/html;
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+
+    location /api/ {
+        proxy_pass http://torrust-docker-backend-1:3000/;
+    }
+}
+

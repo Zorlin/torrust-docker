@@ -1,4 +1,8 @@
-# Ignore configuration file
+# Ignore configuration files
 config.toml
 tracker-config.toml
 backend-config.toml
+frontend.env
+
+# Ignore user data
+data/**
