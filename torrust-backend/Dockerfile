@@ -24,4 +24,24 @@ RUN . "$HOME/.cargo/env" && /root/.cargo/bin/sqlx db setup
 # Build torrust-tracker
 RUN . "$HOME/.cargo/env" && cargo build --release
 
-ENTRYPOINT ["/bin/bash"]
+# Now build our real container :)
+FROM alpine:3.14
+
+# Install necessary packages
+RUN apk add --no-cache sqlite-libs libgcc libressl-dev
+RUN apk add libc6-compat
+
+# Helpful for debugging, disabled for release
+RUN apk add --no-cache bash
+
+RUN mkdir -p /opt/torrust/torrust/backend/target/release
+
+COPY --from=build /opt/torrust/torrust/backend/target/release/torrust /opt/torrust/torrust/backend/target/release/torrust
+
+# Install scripts
+RUN mkdir /scripts
+COPY scripts/ /scripts
+RUN chmod +x /scripts/entry.sh
+
+ENTRYPOINT ["/scripts/entry.sh"]
+CMD ["create-config"]

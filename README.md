@@ -8,6 +8,7 @@ You'll first need to generate some configuration files with which to run Torrust
 
 ```
 docker run --rm zorlin/torrust-tracker:latest > tracker-config.toml
+docker run --rm torrust-backend:latest > backend-config.toml
 ```
 
 
