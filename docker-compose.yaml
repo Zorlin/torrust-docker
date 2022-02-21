@@ -1,8 +1,22 @@
+version: "3.7"
 services:
   tracker:
-    # We use torrust-tracker here
-    image: torrust-tracker:latest
+    image: zorlin/torrust-tracker:latest
     expose:
       - 6969
     volumes:
-      - ${PWD}/config.toml:/opt/torrust/torrust-tracker/config.toml
+      - type: bind
+        source: ./tracker-config.toml
+        target: /opt/torrust/torrust-tracker/config.toml
+    networks:
+      - torrust
+  backend:
+    image: zorlin/torrust-backend:latest
+    expose:
+      - 3000
+    volumes:
+      - type: bind
+        source: ./backend-config.toml
+        target: /opt/torrust/torrust/backend/config.toml
+    networks:
+      - torrust

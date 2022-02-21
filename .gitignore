@@ -1,0 +1,4 @@
+# Ignore configuration file
+config.toml
+tracker-config.toml
+backend-config.toml
