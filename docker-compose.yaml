@@ -8,8 +8,6 @@ services:
       - type: bind
         source: ./tracker-config.toml
         target: /opt/torrust/torrust-tracker/config.toml
-    environment:
-      - YOUR_DOMAIN=localhost
   backend:
     image: zorlin/torrust-backend:latest
     expose:
@@ -18,18 +16,26 @@ services:
       - type: bind
         source: ./backend-config.toml
         target: /opt/torrust/torrust/backend/config.toml
-    environment:
-      - YOUR_DOMAIN=localhost
   nginx:
     image: nginx:latest
     expose:
       - 80
+      - 443
     ports:
       - 0.0.0.0:80:80
+      - 0.0.0.0:443:443
     volumes:
       - type: bind
         source: ./data/frontend/dist/
         target: /usr/share/nginx/html
       - ./torrust-frontend/templates:/etc/nginx/templates
+      - ./data/certbot/www:/var/www/certbot/:ro
+      - ./data/certbot/conf/:/etc/nginx/ssl/:ro
     environment:
-      - YOUR_DOMAIN=localhost
+      - YOUR_DOMAIN=riff.cc
+      - SSL_ENABLED=yes
+  certbot:
+    image: certbot/certbot:latest
+    volumes:
+      - ./data/certbot/www/:/var/www/certbot/:rw
+      - ./data/certbot/conf/:/etc/letsencrypt/:rw
