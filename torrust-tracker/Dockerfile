@@ -25,6 +25,7 @@ RUN mkdir -p /opt/torrust/torrust-tracker/target/release
 COPY --from=build /opt/torrust/torrust-tracker/target/release/torrust-tracker /opt/torrust/torrust-tracker/target/release/torrust-tracker
 
 # Install scripts
+RUN mkdir /removeme
 RUN mkdir /scripts
 COPY scripts/ /scripts
 RUN chmod +x /scripts/entry.sh
@@ -33,4 +34,3 @@ RUN chmod +x /scripts/entry.sh
 WORKDIR /opt/torrust/torrust-tracker
 
 ENTRYPOINT ["/scripts/entry.sh"]
-CMD ["create-config"]

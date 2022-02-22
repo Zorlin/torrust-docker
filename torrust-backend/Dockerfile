@@ -40,6 +40,7 @@ COPY --from=build /opt/torrust/torrust/backend/target/release/torrust /opt/torru
 COPY --from=build /opt/torrust/torrust/backend/data.db /opt/torrust/torrust/backend/data.db
 
 # Install scripts
+RUN mkdir /removeme
 RUN mkdir /scripts
 COPY scripts/ /scripts
 RUN chmod +x /scripts/entry.sh
@@ -48,4 +49,3 @@ RUN chmod +x /scripts/entry.sh
 WORKDIR /opt/torrust/torrust/backend
 
 ENTRYPOINT ["/scripts/entry.sh"]
-CMD ["create-config"]

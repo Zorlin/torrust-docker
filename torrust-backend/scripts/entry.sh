@@ -6,11 +6,9 @@ if [ ! -f "/opt/torrust/torrust/backend/config.toml" ]; then
 	# Print the config file.
 	cat config.toml
 else
-        # Enable core dumps
-        echo '/tmp/core.%h.%e.%t' > /proc/sys/kernel/core_pattern
-        ulimit -c unlimited
 	# Change directory
         cd /opt/torrust/torrust/backend
+	ls /opt/torrust/torrust/backend/target/release/torrust
 	# Run torrust-tracker
 	/opt/torrust/torrust/backend/target/release/torrust
 fi
