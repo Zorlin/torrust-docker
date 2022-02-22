@@ -1,12 +1,8 @@
-FROM alpine:3.14 as build
+FROM ubuntu:focal as build
 
 # Install necessary packages
-#RUN apk add --no-cache git curl rust cargo bash libressl-dev sqlite-dev
-# Install rust via rustup instead of apk as the apk version is too old.
-RUN apk add --no-cache git curl bash libressl-dev sqlite-dev libgcc build-base
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y git curl bash libssl-dev libsqlite3-dev build-essential pkg-config openssl
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-# Install libc6-compat so sqlx will run without a not found error :)
-RUN apk add libc6-compat
 
 # Create torrust folder
 RUN mkdir /opt/torrust/
@@ -25,14 +21,12 @@ RUN . "$HOME/.cargo/env" && /root/.cargo/bin/sqlx db setup
 RUN . "$HOME/.cargo/env" && cargo build --release
 
 # Now build our real container :)
-FROM alpine:3.14
+FROM ubuntu:focal
 
 # Install necessary packages
-RUN apk add --no-cache sqlite-libs libgcc libressl-dev
-RUN apk add libc6-compat
+RUN apt-get update && apt-get install -y sqlite3 libssl-dev
 
 # Helpful for debugging, disabled for release
-RUN apk add --no-cache bash
 
 RUN mkdir -p /opt/torrust/torrust/backend/target/release
 
@@ -40,7 +34,6 @@ COPY --from=build /opt/torrust/torrust/backend/target/release/torrust /opt/torru
 COPY --from=build /opt/torrust/torrust/backend/data.db /opt/torrust/torrust/backend/db/data.db
 
 # Install scripts
-RUN mkdir /removeme
 RUN mkdir /scripts
 COPY scripts/ /scripts
 RUN chmod +x /scripts/entry.sh
