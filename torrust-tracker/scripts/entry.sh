@@ -13,6 +13,7 @@ if [ ! -f "/opt/torrust/torrust-tracker/config.toml" ]; then
 	# Print the config file.
 	cat config.toml
 else
+	cd /opt/torrust/torrust-tracker
 	# Run torrust-tracker
 	/opt/torrust/torrust-tracker/target/release/torrust-tracker
 fi

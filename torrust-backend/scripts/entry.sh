@@ -9,6 +9,8 @@ else
         # Enable core dumps
         echo '/tmp/core.%h.%e.%t' > /proc/sys/kernel/core_pattern
         ulimit -c unlimited
+	# Change directory
+        cd /opt/torrust/torrust/backend
 	# Run torrust-tracker
 	/opt/torrust/torrust/backend/target/release/torrust
 fi
