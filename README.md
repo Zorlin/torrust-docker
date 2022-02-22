@@ -30,10 +30,6 @@ Once you've created the configuration files and frontend build, simply bring up 
 
 You may need to run it a few times ;)
 
-## What just happened?
-
-We set up a basic Torrust instance which runs entirely in Docker and published it to the web. This is a very early version of the Docker tooling for Torrust but should soon support (almost) everything you'd want to do with Torrust. More documentation coming soon!
-
 ## Adding TLS/SSL support
 Once you're up and running, you should add TLS/SSL certificates to enable HTTPS. Luckily this is easy, thanks to Let's Encrypt. Run this command, replacing example@protonmail.com with an email you can receive renewal notices on, and example.com with your site.
 
@@ -81,3 +77,7 @@ server {
 ```
 
 Now reload the service and you should see a working HTTPS site, all running in Docker. Magic!
+
+## What just happened?
+
+We set up a basic Torrust instance which runs entirely in Docker and published it to the web. This is a very early version of the Docker tooling for Torrust but should soon support (almost) everything you'd want to do with Torrust. More documentation coming soon!
