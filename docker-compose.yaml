@@ -11,6 +11,7 @@ services:
     environment:
       - YOUR_DOMAIN=localhost
   backend:
+    privileged: true
     image: zorlin/torrust-backend:latest
     expose:
       - 3000
