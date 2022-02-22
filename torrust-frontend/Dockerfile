@@ -1,4 +1,4 @@
-FROM alpine:3.14 as build
+FROM alpine:3.14
 
 # Install necessary packages
 RUN apk add --no-cache git bash nodejs npm
@@ -8,7 +8,6 @@ RUN mkdir /opt/torrust/
 RUN git clone https://github.com/torrust/torrust.git /opt/torrust/torrust
 
 # Install scripts
-RUN mkdir /removeme
 RUN mkdir /scripts
 COPY scripts/ /scripts
 RUN chmod +x /scripts/entry.sh

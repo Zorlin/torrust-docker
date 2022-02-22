@@ -29,5 +29,8 @@ RUN mkdir /scripts
 COPY scripts/ /scripts
 RUN chmod +x /scripts/entry.sh
 
+# Switch to tracker dir
+WORKDIR /opt/torrust/torrust-tracker
+
 ENTRYPOINT ["/scripts/entry.sh"]
 CMD ["create-config"]
