@@ -15,10 +15,15 @@ services:
       - 3000
     volumes:
       - type: bind
+        source: ./data/backend/
+        target: /opt/torrust/torrust/backend/db/
+      - type: bind
         source: ./backend-config.toml
         target: /opt/torrust/torrust/backend/config.toml
   nginx:
     image: nginx:latest
+    depends_on:
+      - backend
     expose:
       - 80
       - 443

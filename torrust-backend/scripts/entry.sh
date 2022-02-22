@@ -7,7 +7,7 @@ if [ ! -f "/opt/torrust/torrust/backend/config.toml" ]; then
 	cat config.toml
 else
 	# Change directory
-        cd /opt/torrust/torrust/backend
+        cd /opt/torrust/torrust/backend/db
 	ls /opt/torrust/torrust/backend/target/release/torrust
 	# Run torrust-tracker
 	/opt/torrust/torrust/backend/target/release/torrust

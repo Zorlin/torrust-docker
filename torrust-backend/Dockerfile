@@ -37,7 +37,7 @@ RUN apk add --no-cache bash
 RUN mkdir -p /opt/torrust/torrust/backend/target/release
 
 COPY --from=build /opt/torrust/torrust/backend/target/release/torrust /opt/torrust/torrust/backend/target/release/torrust
-COPY --from=build /opt/torrust/torrust/backend/data.db /opt/torrust/torrust/backend/data.db
+COPY --from=build /opt/torrust/torrust/backend/data.db /opt/torrust/torrust/backend/db/data.db
 
 # Install scripts
 RUN mkdir /removeme
