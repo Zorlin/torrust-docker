@@ -1,0 +1,32 @@
+name: build our image
+
+on:
+  push:
+    branches: master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v2
+      - name: install buildx
+        id: buildx
+        uses: crazy-max/ghaction-docker-buildx@v1
+        with:
+          version: latest
+      - name: build the tracker
+      run: |
+        docker buildx build \
+          --tag zorlin/torrust-tracker:latest \
+          --platform linux/amd64,linux/arm/v7,linux/arm64
+      - name: build the frontend
+      run: |
+        docker buildx build \
+          --tag zorlin/torrust-frontend:latest \
+          --platform linux/amd64,linux/arm/v7,linux/arm64
+      - name: build the backend
+      run: |
+        docker buildx build \
+          --tag zorlin/torrust-backend:latest \
+          --platform linux/amd64,linux/arm/v7,linux/arm64
