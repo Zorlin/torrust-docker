@@ -22,6 +22,11 @@ You'll need to generate some configuration files with which to run Torrust.
 # Generate tracker and backend configuration
 docker run --rm zorlin/torrust-tracker:latest > tracker-config.toml
 docker run --rm zorlin/torrust-backend:latest > backend-config.toml
+# Adjust the configuration to reflect our Docker environment
+sed -i 's/"127.0.0.1:1212"/"0.0.0.0:1212"/g' tracker-config.toml
+sed -i 's/admin = "MyAccessToken"/token = "MyAccessToken"/g' tracker-config.toml
+sed -i 's/localhost:6969/tracker:6969/g' backend-config.toml
+sed -i 's/localhost:1212/tracker:1212/g' backend-config.toml
 # Create configuration for the frontend - replace "localhost" if needed
 echo "VITE_API_BASE_URL=http://localhost/api" > frontend.env
 # Build the frontend files

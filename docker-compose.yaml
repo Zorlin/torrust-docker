@@ -4,6 +4,7 @@ services:
     image: zorlin/torrust-tracker:v0.0.1
     expose:
       - 6969
+      - 1212
     volumes:
       - type: bind
         source: ./tracker-config.toml
@@ -19,7 +20,7 @@ services:
         target: /opt/torrust/torrust/backend/db/
       - type: bind
         source: ./backend-config.toml
-        target: /opt/torrust/torrust/backend/config.toml
+        target: /opt/torrust/torrust/backend/db/config.toml
   nginx:
     image: nginx:latest
     depends_on:
