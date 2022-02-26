@@ -9,7 +9,14 @@ It's [Torrust](https://torrust.com), in Docker. Cool!
 
 ## Getting started
 
-You'll first need to generate some configuration files with which to run Torrust.
+Check out a copy of this repository.
+
+```
+git clone https://github.com/zorlin/torrust-docker
+cd torrust-installer
+```
+
+You'll need to generate some configuration files with which to run Torrust.
 
 ```
 # Generate tracker and backend configuration
@@ -81,3 +88,7 @@ Now reload the service and you should see a working HTTPS site, all running in D
 ## What just happened?
 
 We set up a basic Torrust instance which runs entirely in Docker and published it to the web. This is a very early version of the Docker tooling for Torrust but should soon support (almost) everything you'd want to do with Torrust. More documentation coming soon!
+
+## Credits
+
+torrust-docker was created by [Zorlin](https://github.com/zorlin/) and donated to the Torrust project in February 2022.

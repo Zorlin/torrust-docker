@@ -1,7 +1,7 @@
 version: "3.7"
 services:
   tracker:
-    image: zorlin/torrust-tracker:latest
+    image: zorlin/torrust-tracker:v0.0.1
     expose:
       - 6969
     volumes:
@@ -10,7 +10,7 @@ services:
         target: /opt/torrust/torrust-tracker/config.toml
   backend:
     privileged: true
-    image: zorlin/torrust-backend:latest
+    image: zorlin/torrust-backend:v0.0.1
     expose:
       - 3000
     volumes:
@@ -38,7 +38,7 @@ services:
       - ./data/certbot/www:/var/www/certbot/:ro
       - ./data/certbot/conf/:/etc/nginx/ssl/:ro
     environment:
-      - YOUR_DOMAIN=riff.cc
+      - YOUR_DOMAIN=example.com
       - SSL_ENABLED=yes
   certbot:
     image: certbot/certbot:latest
