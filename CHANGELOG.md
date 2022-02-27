@@ -1,3 +1,9 @@
+# v0.0.2
+Caddy update.
+
+* Adds Caddy, drops nginx and certbot
+* Switches torrust-backend from Alpine Linux to Ubuntu Linux to solve a segfault issue
+
 # v0.0.1
 
 Initial release.
