@@ -21,28 +21,18 @@ services:
       - type: bind
         source: ./backend-config.toml
         target: /opt/torrust/torrust/backend/db/config.toml
-  nginx:
-    image: nginx:latest
-    depends_on:
-      - backend
-    expose:
-      - 80
-      - 443
+  caddy:
+    image: caddy:alpine
+    restart: unless-stopped
     ports:
-      - 0.0.0.0:80:80
-      - 0.0.0.0:443:443
+      - "80:80"
+      - "443:443"
     volumes:
-      - type: bind
-        source: ./data/frontend/dist/
-        target: /usr/share/nginx/html
-      - ./torrust-frontend/templates:/etc/nginx/templates
-      - ./data/certbot/www:/var/www/certbot/:ro
-      - ./data/certbot/conf/:/etc/nginx/ssl/:ro
-    environment:
-      - YOUR_DOMAIN=example.com
-      - SSL_ENABLED=yes
-  certbot:
-    image: certbot/certbot:latest
-    volumes:
-      - ./data/certbot/www/:/var/www/certbot/:rw
-      - ./data/certbot/conf/:/etc/letsencrypt/:rw
+      - $PWD/Caddyfile:/etc/caddy/Caddyfile
+      - $PWD/data/frontend/dist/:/srv
+      - caddy_data:/data
+      - caddy_config:/config
+volumes:
+  caddy_data:
+    external: true
+  caddy_config:

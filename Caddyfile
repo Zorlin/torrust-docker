@@ -1,0 +1,8 @@
+example.com {
+	root * /srv
+	file_server
+	route /api/* {
+		uri strip_prefix /api
+		reverse_proxy backend:3000
+	}
+}
