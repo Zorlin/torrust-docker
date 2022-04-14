@@ -44,9 +44,12 @@ docker run --rm \
   -v "$(pwd)"/frontend.env:/opt/torrust/torrust/frontend/.env \
   -v "$(pwd)"/data/frontend/dist:/opt/torrust/torrust/frontend/dist \
   zorlin/torrust-frontend:latest
+  
+# Create a place for backend data to be stored
+mkdir -p data/backend/
 ```
 
-Once you've created the configuration files and frontend build, simply bring up the service with Docker Compose;
+Once you've created the configuration files and frontend build, and created a place for backend data, simply bring up the service with Docker Compose;
 
 `docker-compose up -d`
 
