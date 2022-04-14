@@ -19,7 +19,7 @@ cd torrust-installer
 You'll need to generate some configuration files with which to run Torrust.
 
 ```
-# Replace your.demain with your domain name in the Caddyfile
+# Replace your.domain with your domain name in the Caddyfile
 # Eg: 's/example.com/torrust.com/g'
 sed -i 's/example.com/your.domain/g' Caddyfile
 
