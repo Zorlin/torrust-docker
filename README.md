@@ -36,8 +36,8 @@ sed -i 's/admin = "MyAccessToken"/token = "MyAccessToken"/g' tracker-config.toml
 sed -i 's/localhost:6969/your.domain:6969/g' backend-config.toml
 sed -i 's/localhost:1212/tracker:1212/g' backend-config.toml
 
-# Create configuration for the frontend - replace "localhost" if needed
-echo "VITE_API_BASE_URL=http://localhost/api" > frontend.env
+# Create configuration for the frontend - replace "your.domain" with your site
+echo "VITE_API_BASE_URL=https://your.domain/api" > frontend.env
 
 # Build the frontend files
 docker run --rm \
