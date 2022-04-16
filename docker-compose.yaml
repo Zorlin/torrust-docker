@@ -1,7 +1,7 @@
 version: "3.7"
 services:
   tracker:
-    image: zorlin/torrust-tracker:v0.0.1
+    image: zorlin/torrust-tracker:v0.2.0
     ports:
       - "6969:6969/tcp"
       - "6969:6969/udp"
@@ -13,7 +13,7 @@ services:
         target: /opt/torrust/torrust-tracker/config.toml
   backend:
     privileged: true
-    image: zorlin/torrust-backend:v0.0.1
+    image: zorlin/torrust-backend:v0.2.0
     expose:
       - 3000
     volumes:
