@@ -1,4 +1,5 @@
 # torrust-docker
+![GitHub CI](https://github.com/zorlin/torrust-docker/actions/workflows/image.yml/badge.svg)
 
 It's [Torrust](https://torrust.com), in Docker. Cool!
 
