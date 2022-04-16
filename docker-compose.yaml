@@ -2,8 +2,10 @@ version: "3.7"
 services:
   tracker:
     image: zorlin/torrust-tracker:v0.0.1
+    ports:
+      - "6969:6969/tcp"
+      - "6969:6969/udp"
     expose:
-      - 6969
       - 1212
     volumes:
       - type: bind
