@@ -14,7 +14,7 @@ Check out a copy of this repository.
 
 ```
 git clone https://github.com/zorlin/torrust-docker
-cd torrust-installer
+cd torrust-docker
 ```
 
 You'll need to generate some configuration files with which to run Torrust.
