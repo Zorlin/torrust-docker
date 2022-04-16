@@ -1,4 +1,4 @@
-FROM alpine:3.14 as build
+FROM alpine:3.15.4 as build
 
 # Install necessary packages
 RUN apk add --no-cache git curl rust cargo bash libressl-dev sqlite-dev
@@ -12,7 +12,7 @@ WORKDIR /opt/torrust/torrust-tracker
 RUN cargo build --release
 
 # Now build our real container :)
-FROM alpine:3.14
+FROM alpine:3.15.4
 
 # Install necessary packages
 RUN apk add --no-cache sqlite-libs libgcc
