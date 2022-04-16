@@ -34,6 +34,7 @@ docker run --rm zorlin/torrust-backend:latest > backend-config.toml
 # Adjust the configuration to reflect our Docker environment
 sed -i 's/"127.0.0.1:1212"/"0.0.0.0:1212"/g' tracker-config.toml
 sed -i 's/admin = "MyAccessToken"/token = "MyAccessToken"/g' tracker-config.toml
+# Replace your.domain with your domian name
 sed -i 's/localhost:6969/your.domain:6969/g' backend-config.toml
 sed -i 's/localhost:1212/tracker:1212/g' backend-config.toml
 
